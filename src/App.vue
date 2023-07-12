@@ -4,9 +4,9 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-secondary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">MovieApp</a>
+        <a class="navbar-brand text-light" href="#">MovieApp</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,7 +34,7 @@ import { RouterLink, RouterView } from "vue-router";
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-light" type="submit">
               Search
             </button>
           </form>
@@ -50,7 +50,8 @@ import { RouterLink, RouterView } from "vue-router";
 
 li a {
   margin-left:3rem;
-
+  color:#fff; 
+  text-decoration: none;
 }
 
 </style>
