@@ -1,3 +1,5 @@
-#MovieApp 
+# MovieApp 
 
-** In proccess** 
+**Developer:** [Marin Žilić](https://github.com/marinzilic7) 
+
+**In process**
