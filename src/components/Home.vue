@@ -59,11 +59,19 @@
   </div>
   <h1 class="movies">Movies</h1>
   <section class="moviesSection">
-   
-    <div class="card movieCard" v-for="movie in testMovie" :key="movie.id"  style="width: 18rem">
-      <img :src="getImageUrl(movie.poster_path)" class="card-img-top" />
+    <div
+      class="card movieCard"
+      v-for="movie in testMovie"
+      :key="movie.id"
+      style="width: 18rem"
+    >
+      <img
+        :src="getImageUrl(movie.poster_path)"
+        class="card-img-top"
+        @click="redirectToFilm(movie)"
+      />
       <div class="card-body movieCardBody">
-        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-title">{{ movie.title }}</p>
         <div class="marinItems">
           <p class="card-text">
             {{ movie.vote_average }}
@@ -87,7 +95,7 @@
 </template>
 <script>
 import axios from "axios";
-
+import { useRouter } from "vue-router";
 export default {
   data() {
     return {
@@ -122,16 +130,14 @@ export default {
         this.selectedMovie = response.data.results;
         this.testMovie = response.data.results;
 
-        console.log(this.selectedMovie);
+        console.log("IDDDDDDDDDDDDDDDDDDDDDDD je", this.testMovie.id);
 
         for (let index = 0; index < this.selectedMovie.length; index++) {
           const element = this.selectedMovie[index];
-          console.log(element.title);
           this.movieTitle.push(element.title);
           this.moviePosters.push(element.backdrop_path);
-          console.log(this.moviePosters);
 
-          /*   const singleMovie = this.selectedMovie[1]; 
+          /*   const singleMovie = this.selectedMovie[1];
          this.testMovie = singleMovie.poster_path
          this.testMovie = `https://image.tmdb.org/t/p/original${this.testMovie}`; */
 
@@ -163,6 +169,10 @@ export default {
         return "https://image.tmdb.org/t/p/original" + path;
       }
       return "";
+    },
+    redirectToFilm(movie) {
+      const ruta = `/singleMovie/${movie.id}`;
+      this.$router.push({ path: ruta });
     },
   },
 };
@@ -198,31 +208,30 @@ export default {
   color: #fff;
 }
 
-.marinItems{
-    display: flex;
-    align-items: center;
-    gap:7px;
+.marinItems {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
-.marinItems svg{
-    display: flex;
-    position: relative;
-    bottom:9px;
-    color:yellow;
-}
-
-.movies{
-  color:#fff;
-  margin-top:20px;
-  margin-left:30px;
+.marinItems svg {
+  display: flex;
+  position: relative;
+  bottom: 9px;
+  color: yellow;
 }
 
-.moviesSection{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    
-  }
+.movies {
+  color: #fff;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.moviesSection {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 @media only screen and (max-width: 600px) {
   .Carousel {
@@ -240,39 +249,36 @@ export default {
     font-size: 20px;
   }
 
-  .movieCard{ 
+  .movieCard {
     display: flex;
     justify-content: space-evenly !important;
-    margin-top:5rem;;
+    margin-top: 5rem;
     height: 191px !important;
     width: 128px !important;
     font-size: 15px;
   }
 
-  .movieCard h5{
+  .movieCard p {
     font-size: 12px;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .movieCardBody{
+  .movieCardBody {
     display: flex;
     justify-content: space-between;
     font-size: 10px;
-    width:130%;
+    width: 130%;
     position: relative;
-    right:17px;
+    right: 17px;
   }
 
-  .moviesSection{
+  .moviesSection {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    
   }
-
-  
 }
 </style>
