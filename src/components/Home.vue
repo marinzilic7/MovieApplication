@@ -133,4 +133,12 @@ export default {
   position: relative;
   left: 23%;
 }
+
+@media only screen and (max-width: 600px) {
+    .movieBackground{
+        height: 310px;
+        
+    }
+}
+
 </style>

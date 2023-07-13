@@ -15,10 +15,22 @@ import { RouterLink, RouterView } from "vue-router";
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="currentColor"
+            class="bi bi-list burger"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-s-1">
             <li class="nav-item">
               <RouterLink to="/">Movies</RouterLink>
             </li>
@@ -79,7 +91,7 @@ img {
   outline: none;
   border: none;
   background-color: #202020;
-  color:#fff; 
+  color: #fff;
 }
 
 .searchBar::placeholder {
@@ -87,10 +99,44 @@ img {
   font-size: 15px;
 }
 
-.SVG{
-  color:#fff;
-  position:relative;
+.SVG {
+  color: #fff;
+  position: relative;
   right: 3rem;
-  top:0.7rem;
+  top: 0.7rem;
+}
+
+.burger {
+  color:#fff; 
+ 
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {
+    display: flex;
+    align-items: center;
+    margin-top:30px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    gap: 15px;
+   }
+   .searchBar{
+    margin-top: 20px;
+    margin-left:20px;
+    position: relative;
+    left:10px;
+    width:100%;
+    
+   }
+
+   .SVG{
+    position: relative;
+    top:2rem;
+   }
+
+   
 }
 </style>
