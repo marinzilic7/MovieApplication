@@ -57,16 +57,16 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+  <h1 class="movies">Movies</h1>
   <section class="moviesSection">
-    <h1>Movies</h1>
-    <div class="card movieCard" style="width: 18rem">
-      <img :src="getImageUrl(testMovie.poster_path)" class="card-img-top" />
+   
+    <div class="card movieCard" v-for="movie in testMovie" :key="movie.id"  style="width: 18rem">
+      <img :src="getImageUrl(movie.poster_path)" class="card-img-top" />
       <div class="card-body movieCardBody">
-        <h5 class="card-title">{{ testMovie.title }}</h5>
+        <h5 class="card-title">{{ movie.title }}</h5>
         <div class="marinItems">
           <p class="card-text">
-            {{ testMovie.vote_average }}
+            {{ movie.vote_average }}
           </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@ export default {
       )
       .then((response) => {
         this.selectedMovie = response.data.results;
-        this.testMovie = response.data.results[1];
+        this.testMovie = response.data.results;
 
         console.log(this.selectedMovie);
 
@@ -210,6 +210,20 @@ export default {
     color:yellow;
 }
 
+.movies{
+  color:#fff;
+  margin-top:20px;
+  margin-left:30px;
+}
+
+.moviesSection{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    
+  }
+
 @media only screen and (max-width: 600px) {
   .Carousel {
     width: 100%;
@@ -226,9 +240,39 @@ export default {
     font-size: 20px;
   }
 
-  .movieCard{
-    margin:auto;
-    margin-top:30px;
+  .movieCard{ 
+    display: flex;
+    justify-content: space-evenly !important;
+    margin-top:5rem;;
+    height: 191px !important;
+    width: 128px !important;
+    font-size: 15px;
   }
+
+  .movieCard h5{
+    font-size: 12px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+  }
+
+  .movieCardBody{
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    width:130%;
+    position: relative;
+    right:17px;
+  }
+
+  .moviesSection{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    
+  }
+
+  
 }
 </style>
