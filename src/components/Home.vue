@@ -13,7 +13,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block posterTitle">
           <h5>{{ titlePoster }}</h5>
         </div>
       </div>
@@ -23,7 +23,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block posterTitle">
           <h5>{{ titlePoster2 }}</h5>
         </div>
       </div>
@@ -33,7 +33,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block posterTitle">
           <h5>{{ titlePoster3 }}</h5>
         </div>
       </div>
@@ -138,6 +138,11 @@ export default {
     .movieBackground{
         height: 310px;
         
+    }
+    .posterTitle h5{
+        position: relative;
+        top:30px;
+        font-size: 12px;
     }
 }
 
