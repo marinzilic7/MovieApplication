@@ -1,12 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 </script>
-
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-secondary">
+    <nav class="navbar navbar-expand-lg bgNav">
       <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">MovieApp</a>
+        <img src="./images/logo.png" alt="" />
         <button
           class="navbar-toggler"
           type="button"
@@ -29,14 +28,23 @@ import { RouterLink, RouterView } from "vue-router";
           </ul>
           <form class="d-flex" role="search">
             <input
-              class="form-control me-2"
+              class="form-control me-2 searchBar"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-light" type="submit">
-              Search
-            </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-search SVG"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
           </form>
         </div>
       </div>
@@ -47,11 +55,41 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
+/* Definiranje boja  */
+
+.bgNav {
+  background-color: #2a2a2a;
+}
 
 li a {
-  margin-left:3rem;
-  color:#fff; 
+  margin-left: 3rem;
+  color: #fff;
   text-decoration: none;
 }
 
+img {
+  width: 64px;
+  height: 40px;
+}
+
+.searchBar {
+  width: 230px;
+  height: 40px;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  background-color: #202020;
+}
+
+.searchBar::placeholder {
+  color: #fff;
+  font-size: 15px;
+}
+
+.SVG{
+  color:#fff;
+  position:relative;
+  right: 3rem;
+  top:0.7rem;
+}
 </style>
