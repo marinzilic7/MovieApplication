@@ -122,6 +122,8 @@ img {
     font-size: 20px;
     letter-spacing: 1px;
     gap: 15px;
+    position: relative;
+    right:10px;
    }
    .searchBar{
     margin-top: 20px;

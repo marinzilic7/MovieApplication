@@ -3,7 +3,7 @@
 <template>
   <div
     id="carouselExampleInterval"
-    class="carousel slide mt-5"
+    class="carousel slide mt-5 Carousel"
     data-bs-ride="carousel"
   >
     <div class="carousel-inner">
@@ -13,7 +13,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption  d-md-block posterTitle">
+        <div class="carousel-caption d-md-block posterTitle">
           <h5>{{ titlePoster }}</h5>
         </div>
       </div>
@@ -23,7 +23,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption  d-md-block posterTitle">
+        <div class="carousel-caption d-md-block posterTitle">
           <h5>{{ titlePoster2 }}</h5>
         </div>
       </div>
@@ -33,7 +33,7 @@
           class="d-block movieBackground"
           alt="..."
         />
-        <div class="carousel-caption  d-md-block posterTitle">
+        <div class="carousel-caption d-md-block posterTitle">
           <h5>{{ titlePoster3 }}</h5>
         </div>
       </div>
@@ -48,7 +48,7 @@
       <span class="visually-hidden">Previous</span>
     </button>
     <button
-      class="carousel-control-next"
+      class="carousel-control-next nextButton"
       type="button"
       data-bs-target="#carouselExampleInterval"
       data-bs-slide="next"
@@ -135,15 +135,20 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-    .movieBackground{
-        height: 310px;
-        
-    }
-    .posterTitle h5{
-        position: relative;
-        top:30px;
-        font-size: 12px;
-    }
+  .Carousel {
+    width:100%;
+  }
+  .movieBackground {
+    height: 350px;
+    width: 285px;
+    position: relative;
+    left: 10% !important;
+  }
+  .posterTitle h5 {
+    position: relative;
+    top: 30px;
+    
+    font-size: 20px;
+  }
 }
-
 </style>
