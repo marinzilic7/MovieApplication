@@ -57,6 +57,33 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+  <section class="moviesSection">
+    <h1>Movies</h1>
+    <div class="card movieCard" style="width: 18rem">
+      <img :src="getImageUrl(testMovie.poster_path)" class="card-img-top" />
+      <div class="card-body movieCardBody">
+        <h5 class="card-title">{{ testMovie.title }}</h5>
+        <div class="marinItems">
+          <p class="card-text">
+            {{ testMovie.vote_average }}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-star-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <script>
 import axios from "axios";
@@ -76,6 +103,8 @@ export default {
       titlePoster: "",
       titlePoster2: "",
       titlePoster3: "",
+      testMovie: null,
+      soloPoster: null,
     };
   },
   created() {
@@ -91,6 +120,7 @@ export default {
       )
       .then((response) => {
         this.selectedMovie = response.data.results;
+        this.testMovie = response.data.results[1];
 
         console.log(this.selectedMovie);
 
@@ -100,6 +130,10 @@ export default {
           this.movieTitle.push(element.title);
           this.moviePosters.push(element.backdrop_path);
           console.log(this.moviePosters);
+
+          /*   const singleMovie = this.selectedMovie[1]; 
+         this.testMovie = singleMovie.poster_path
+         this.testMovie = `https://image.tmdb.org/t/p/original${this.testMovie}`; */
 
           this.moviePoster =
             this.selectedMovie[this.randomNumber].backdrop_path;
@@ -123,6 +157,14 @@ export default {
         }
       });
   },
+  methods: {
+    getImageUrl(path) {
+      if (path) {
+        return "https://image.tmdb.org/t/p/original" + path;
+      }
+      return "";
+    },
+  },
 };
 </script>
 
@@ -134,21 +176,59 @@ export default {
   left: 23%;
 }
 
+.moviesSection {
+  margin-top: 50px;
+  color: #fff;
+}
+
+.moviesSection h1 {
+  margin-left: 30px;
+}
+
+.movieCard {
+  border: none;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.movieCardBody {
+  display: flex;
+  justify-content: space-between;
+  background-color: #121212;
+  color: #fff;
+}
+
+.marinItems{
+    display: flex;
+    align-items: center;
+    gap:7px;
+}
+.marinItems svg{
+    display: flex;
+    position: relative;
+    bottom:9px;
+    color:yellow;
+}
+
 @media only screen and (max-width: 600px) {
   .Carousel {
-    width:100%;
+    width: 100%;
   }
   .movieBackground {
-    height: 350px;
-    width: 285px;
+    height: 370px;
+    width: 330px;
     position: relative;
     left: 10% !important;
   }
   .posterTitle h5 {
     position: relative;
     top: 30px;
-    
     font-size: 20px;
+  }
+
+  .movieCard{
+    margin:auto;
+    margin-top:30px;
   }
 }
 </style>
