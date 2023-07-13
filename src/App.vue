@@ -79,6 +79,7 @@ img {
   outline: none;
   border: none;
   background-color: #202020;
+  color:#fff; 
 }
 
 .searchBar::placeholder {
