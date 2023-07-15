@@ -7,7 +7,7 @@
         </div>
         <div class="detailsMovie">
           <h2>{{ singleMovie.title }}</h2>
-          <p>{{ singleMovie.overview }}</p>
+          <p class="Desc" >{{ singleMovie.overview }}</p>
 
           <div class="endDetails">
             <p>{{ getReleaseYear(singleMovie.release_date) }}</p>
@@ -158,6 +158,7 @@ ul {
   height: 432px;
   position: relative;
   z-index: 1;
+  border-radius: 20px;
 }
 
 .detailsMovie {
@@ -190,17 +191,36 @@ ul {
   bottom: 8px;
 }
 
-.voteTime{
-    display: flex;
-    gap:5px;
-    
+.voteTime {
+  display: flex;
+  gap: 5px;
 }
 
-.sTar{
-    position: relative;
-    z-index: 1;
-    color:yellow;
-    top:2.5px;
-    
+.sTar {
+  position: relative;
+  z-index: 1;
+  color: yellow;
+  top: 2.5px;
+}
+@media only screen and (max-width: 600px) {
+
+  
+  .aboutMovie {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:3rem;
+  }
+ .Desc{
+    width:300px;
+    text-align: flex-start;
+    margin-top:2rem;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+ }
+
+ .moviePoster{
+    height: 101 !important;
+ }
 }
 </style>

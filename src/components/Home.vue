@@ -221,8 +221,8 @@ export default {
 
 .movies {
   color: #fff;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin-top:2rem;
+  margin-left: 2.5rem;
 }
 
 .moviesSection {
@@ -278,6 +278,7 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    margin-right: 2rem;
   }
 }
 </style>
