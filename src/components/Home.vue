@@ -68,7 +68,7 @@
       <img
         :src="getImageUrl(movie.poster_path)"
         class="card-img-top"
-        @click="redirectToFilm(movie)"
+        @click="redirectToFilm(movie.id)"
       />
       <div class="card-body movieCardBody">
         <p class="card-title">{{ movie.title }}</p>
@@ -171,8 +171,7 @@ export default {
       return "";
     },
     redirectToFilm(movie) {
-      const ruta = `/singleMovie/${movie.id}`;
-      this.$router.push({ path: ruta });
+      this.$router.push({ name: "singleMovie", params: { id: movie } });
     },
   },
 };
