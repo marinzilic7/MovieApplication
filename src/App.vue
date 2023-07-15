@@ -1,5 +1,35 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
+import SearchResults from "@/components/SearchResults.vue";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      searchQuery: "",
+      searchResults: [],
+    };
+  },
+  methods: {
+    performSearch() {
+      const apiKey = "2b24ba56d7cced960b52aa5d062f497e";
+      const language = "en-US";
+      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=${language}&query=${encodeURIComponent(this.searchQuery)}`;
+
+      axios
+        .get(searchUrl)
+        .then((response) => {
+          this.searchResults = response.data.results;
+          this.$router.push({ name: "search", query: { results: JSON.stringify(this.searchResults) } });
+
+
+          console.log("Rezultati pretraživanja:", this.searchResults);
+        })
+        .catch((error) => {
+          console.error("Greška pri pretraživanju:", error);
+        });
+    },
+  },
+};
 </script>
 <template>
   <header>
@@ -38,12 +68,14 @@ import { RouterLink, RouterView } from "vue-router";
               <RouterLink to="/about">Series</RouterLink>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+          <form class="d-flex" role="search" @submit.prevent>
             <input
               class="form-control me-2 searchBar"
               type="search"
               placeholder="Search"
               aria-label="Search"
+              @input="performSearch"
+              v-model="searchQuery"
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
