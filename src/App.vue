@@ -242,7 +242,7 @@ img {
 
   .searchBarr {
     position: relative;
-    left:15px;
+    left:30px;
     width: 200px;
     height: 30px;
     border-radius: 30px;
