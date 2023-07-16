@@ -242,8 +242,8 @@ img {
 
   .searchBarr {
     position: relative;
-    left:30px;
-    width: 230px;
+    left:15px;
+    width: 200px;
     height: 30px;
     border-radius: 30px;
     outline: none;
@@ -255,12 +255,14 @@ img {
 
   .searchBarr::placeholder{
     color:#fff;
+    font-size: 13px !important;
   }
 
   .mobileSearch {
     display: block;
     color: #fff;
     position: relative;
+    right:10px;
     
   }
 
