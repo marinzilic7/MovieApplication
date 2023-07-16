@@ -24,6 +24,7 @@ const router = createRouter({
       path: "/search",
       name: "search",
       component: SearchView,
+      props: (route) => ({ results: JSON.parse(route.query.results) })
     }
    
   ]

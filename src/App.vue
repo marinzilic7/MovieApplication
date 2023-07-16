@@ -2,25 +2,29 @@
 import { RouterLink, RouterView } from "vue-router";
 import SearchResults from "@/components/SearchResults.vue";
 import axios from "axios";
+import { debounce } from "lodash";
 export default {
   data() {
     return {
       searchQuery: "",
       searchResults: [],
+      debouncedSearch: null,
     };
   },
   methods: {
     performSearch() {
       const apiKey = "2b24ba56d7cced960b52aa5d062f497e";
       const language = "en-US";
-      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=${language}&query=${encodeURIComponent(this.searchQuery)}`;
+      const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=${language}&query=${this.searchQuery}`;
 
       axios
         .get(searchUrl)
         .then((response) => {
           this.searchResults = response.data.results;
-          this.$router.push({ name: "search", query: { results: JSON.stringify(this.searchResults) } });
-
+          this.$router.push({
+            name: "search",
+            query: { results: JSON.stringify(this.searchResults) },
+          });
 
           console.log("Rezultati pretraživanja:", this.searchResults);
         })
@@ -28,7 +32,21 @@ export default {
           console.error("Greška pri pretraživanju:", error);
         });
     },
+    debouncedPerformSearch: debounce(function () {
+      this.performSearch();
+    }, 300),
+    resetSearchResults() {
+      this.searchResults = [];
+    },
   },
+  watch: {
+  searchQuery(newValue) {
+    if (newValue === "") {
+      this.resetSearchResults();
+    }
+    this.debouncedPerformSearch();
+  },
+},
 };
 </script>
 <template>
@@ -59,7 +77,7 @@ export default {
             />
           </svg>
         </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-s-1">
             <li class="nav-item">
               <RouterLink to="/">Movies</RouterLink>
@@ -74,7 +92,7 @@ export default {
               type="search"
               placeholder="Search"
               aria-label="Search"
-              @input="performSearch"
+              @input="debouncedPerformSearch"
               v-model="searchQuery"
             />
             <svg
@@ -139,8 +157,7 @@ img {
 }
 
 .burger {
-  color:#fff; 
- 
+  color: #fff;
 }
 
 /* RESPONSIVE */
@@ -150,27 +167,24 @@ img {
   .col-s-1 {
     display: flex;
     align-items: center;
-    margin-top:30px;
+    margin-top: 30px;
     font-size: 20px;
     letter-spacing: 1px;
     gap: 15px;
     position: relative;
-    right:10px;
-   }
-   .searchBar{
+    right: 10px;
+  }
+  .searchBar {
     margin-top: 20px;
-    margin-left:20px;
+    margin-left: 20px;
     position: relative;
-    left:10px;
-    width:100%;
-    
-   }
+    left: 10px;
+    width: 100%;
+  }
 
-   .SVG{
+  .SVG {
     position: relative;
-    top:2rem;
-   }
-
-   
+    top: 2rem;
+  }
 }
 </style>
