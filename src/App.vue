@@ -130,6 +130,9 @@ $(document).ready(function() {
             <li class="nav-item">
               <RouterLink to="/movies">Movies</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink to="/series">Series</RouterLink>
+            </li>
           </ul>
           <form class="d-flex" role="search" @submit.prevent>
             <input

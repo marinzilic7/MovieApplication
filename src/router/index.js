@@ -25,8 +25,12 @@ const router = createRouter({
       name: "search",
       component: SearchView,
       props: (route) => ({ results: JSON.parse(route.query.results) })
+    },
+    {
+      path: '/series',
+      name: 'series',
+      component: () => import('../views/SeriesView.vue')
     }
-   
   ]
 })
 
