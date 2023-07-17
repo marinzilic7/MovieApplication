@@ -150,7 +150,7 @@
         return "";
       },
       redirectToFilm(movie) {
-        this.$router.push({ name: "singleMovie", params: { id: movie } });
+        this.$router.push({ name: "singleSeries", params: { id: movie } });
       },
     },
   };
