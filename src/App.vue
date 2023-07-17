@@ -125,10 +125,10 @@ $(document).ready(function() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-s-1">
             <li class="nav-item">
-              <RouterLink to="/">Movies</RouterLink>
+              <RouterLink to="/">Home</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/about">Series</RouterLink>
+              <RouterLink to="/movies">Movies</RouterLink>
             </li>
           </ul>
           <form class="d-flex" role="search" @submit.prevent>
